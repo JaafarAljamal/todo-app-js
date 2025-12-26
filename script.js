@@ -33,6 +33,9 @@ function addTask(title) {
 function deleteTask(id) {
     tasks = tasks.filter((task) => task.id !== id);
     saveTasks();
+    if (tasks.length === 0) {
+        window.localStorage.removeItem("tasks");
+    }
     return tasks;
 }
 
@@ -66,7 +69,12 @@ function saveTasks() {
 function renderTasks() {
     const container = document.querySelector(".tasks");
     container.innerHTML = ""; // Clear old tasks
-    tasks.forEach ((task) => renderTask(task));
+    if (tasks.length === 0) {
+        container.innerHTML = "<p>No tasks yet!</p>"
+        return;
+    } else {
+        tasks.forEach ((task) => renderTask(task));
+    }
 }
 
 /**
@@ -84,18 +92,18 @@ function renderTask(task) {
     }
 
     const doneBtn = document.createElement("button");
-    doneBtn.textContent = "Done";
+    task.completed ? doneBtn.textContent = "Undo" : doneBtn.textContent = "Done";
     doneBtn.onclick = () => {
         toggleTask(task.id);
         renderTasks();
-    }
+    };
 
     const delBtn = document.createElement("button");
     delBtn.textContent = "Delete";
     delBtn.onclick = () => {
         deleteTask(task.id);
         renderTasks();
-    }
+    };
 
     div.append(p, doneBtn, delBtn);
     container.appendChild(div);
@@ -109,4 +117,10 @@ document.querySelector("#addTaskBtn").onclick = () => {
         input.value = ""; // Clear input field
         renderTasks();
     }
-}
+};
+
+/* Initialize app on page load */
+window.onload = () => {
+    loadTasks();
+    renderTasks();
+};
