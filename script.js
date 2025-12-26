@@ -101,3 +101,12 @@ function renderTask(task) {
     container.appendChild(div);
 }
 
+/* Connect "Add Task" button to addTask and renderTasks functions*/
+document.querySelector("#addTaskBtn").onclick = () => {
+    const input = document.querySelector("#taskInput");
+    if (input.value.trim() !== "") {
+        addTask(input.value);
+        input.value = ""; // Clear input field
+        renderTasks();
+    }
+}
