@@ -1,0 +1,95 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Input and button section */
+#taskInput {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#addTaskBtn {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addTaskBtn:hover {
+    background: #2080b9;
+}
+
+/* Tasks container */
+.tasks {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Each task item */
+.tasks div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.3);
+}
+
+/* Task text */
+.tasks p {
+    margin: 0 10px 0 0;
+    flex-grow: 1;
+}
+
+/* Buttons inside tasks */
+.tasks button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Done button */
+.tasks button:first-of-type {
+    background: #2ecc71;
+    color: white;
+}
+
+.tasks button:first-of-type:hover {
+    background: #27ae60;
+}
+
+/* Delete button */
+.tasks button:last-of-type {
+    background: #e74c3c;
+    color: white;
+}
+
+.tasks button:last-of-type:hover {
+    background: #c0392b;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}

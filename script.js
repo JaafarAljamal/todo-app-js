@@ -88,7 +88,9 @@ function renderTask(task) {
     const p = document.createElement("p");
     p.textContent = task.title;
     if (task.completed) {
-        p.style.textDecoration = "line-through";
+        p.classList.add("completed");
+    } else {
+        p.classList.remove("completed");
     }
 
     const doneBtn = document.createElement("button");
