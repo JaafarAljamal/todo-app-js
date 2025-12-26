@@ -79,6 +79,11 @@ h1 {
     background: #27ae60;
 }
 
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
 /* Delete button */
 .tasks button:last-of-type {
     background: #e74c3c;
@@ -89,7 +94,26 @@ h1 {
     background: #c0392b;
 }
 
-.completed {
-    text-decoration: line-through;
-    color: #888;
+/* responsive design */
+@media (max-width: 600px) {
+    #taskInput {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: -10px;
+    }
+
+    #addTaskBtn {
+        width: 100%;
+    }
+
+    .tasks div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .tasks button {
+        margin-top: 5px;
+        margin: 5px auto 0;
+        width: 100%;
+    }
 }
