@@ -57,3 +57,47 @@ function toggleTask(id) {
 function saveTasks() {
     window.localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+/* UI Layer */
+
+/**
+ * Render all tasks from the tasks array into the UI
+ */
+function renderTasks() {
+    const container = document.querySelector(".tasks");
+    container.innerHTML = ""; // Clear old tasks
+    tasks.forEach ((task) => renderTask(task));
+}
+
+/**
+ * Render a single task into the UI
+ * @param {object} task - The task object to render
+ */
+function renderTask(task) {
+    const container = document.querySelector(".tasks");
+    const div = document.createElement("div");
+
+    const p = document.createElement("p");
+    p.textContent = task.title;
+    if (task.completed) {
+        p.style.textDecoration = "line-through";
+    }
+
+    const doneBtn = document.createElement("button");
+    doneBtn.textContent = "Done";
+    doneBtn.onclick = () => {
+        toggleTask(task.id);
+        renderTasks();
+    }
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    delBtn.onclick = () => {
+        deleteTask(task.id);
+        renderTasks();
+    }
+
+    div.append(p, doneBtn, delBtn);
+    container.appendChild(div);
+}
+
